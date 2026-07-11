@@ -35,15 +35,15 @@ function handleClick(e){
 function displayList() {
   return todo.map(item => {
     return (
-      <li key={item.id}>
+      <li key={item.id} style={{ textDecoration: item.completed ? 'line-through' : 'none', listStyleType: 'none', marginBottom: '10px' }}>
         <input
           type="checkbox"
           checked={item.completed ?? false}
           onChange={() => handleCheckboxChange(item.id)}
         />
         {item.text}
-        <span style={{ marginLeft: '10px' }}>{"\t"}</span> 
-        <button onClick={() => handleDelete(item.id)}>
+        <span style={{ marginLeft: '10px' }}></span> 
+        <button style={{ backgroundColor: 'red', color: 'white' }} onClick={() => handleDelete(item.id)}>
           Delete
         </button>
 
@@ -76,12 +76,16 @@ const handleCheckboxChange = (id) => {
     <>
       <form className="new-item-form">
         <div className="form-row" >
-          <label htmlFor="item">New Item 
+          <label htmlFor="item">New Item <br />
             <input type="text" id="item" value={text} onChange={handleChange}  checked={false} />
           </label>
           
         </div>
-        <button className="btn" onClick={handleClick}> Add </button>
+        <button 
+          style={{ backgroundColor: 'blue', color: 'white', width: '5%', margin: '10px 0' }} 
+          className="btn" 
+          onClick={handleClick}> Add 
+        </button>
       </form>
       <h1 className="header"> To Do List </h1>
       <ul>
